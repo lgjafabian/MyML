@@ -52,6 +52,7 @@ func GetInformation(orderID int64) (*mymlDomain.Sumary, *apierrors.ApiError) {
 	}, nil
 }
 
+// GetChannelInfo recovers data from Channel
 func GetChannelInfo(addressAux *mymlDomain.Address, paymentAux *mymlDomain.Payment, itemAux *mymlDomain.Item, cValues [3]interface{}) {
 	for i := 0; i < 3; i++ {
 		switch v := cValues[i].(type) {
@@ -85,7 +86,7 @@ func GetOrder(order *ordersDomain.Order, orderAux *mymlDomain.OrderSumary, order
 	return nil
 }
 
-// GetItem Format and Item from 8081 API
+// GetItem Format an Item from 8081 API
 func GetItem(order ordersDomain.Order, group *sync.WaitGroup, c chan interface{}) {
 	defer group.Done()
 
@@ -101,6 +102,7 @@ func GetItem(order ordersDomain.Order, group *sync.WaitGroup, c chan interface{}
 	}
 }
 
+// GetPayment Format a Payment from 8081 API
 func GetPayment(order ordersDomain.Order, group *sync.WaitGroup, c chan interface{}) {
 	defer group.Done()
 
@@ -114,6 +116,7 @@ func GetPayment(order ordersDomain.Order, group *sync.WaitGroup, c chan interfac
 	}
 }
 
+// GetAddress Format an Address from 8081 API
 func GetAddress(order ordersDomain.Order, group *sync.WaitGroup, c chan interface{}) {
 	defer group.Done()
 
