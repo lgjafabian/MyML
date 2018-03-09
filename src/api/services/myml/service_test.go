@@ -113,5 +113,27 @@ func BenchmarkGetOrder(b *testing.B) {
 }
 
 func BenchmarkGetInformation(b *testing.B) {
+	// BenchmarkGetInformation-4   	2000000000	         0.00 ns/op	       0 B/op	       0 allocs/op
 	GetInformation(1)
+}
+
+func BenchmarkGetInformationFor10(b *testing.B) {
+	// BenchmarkGetInformationFor1000-4   	       1	1391976065 ns/op	45765672 B/op	  592007 allocs/op
+	for n := 0; n < 10; n++ {
+		GetInformation(1)
+	}
+}
+
+func BenchmarkGetInformationFor1000(b *testing.B) {
+	// BenchmarkGetInformationFor1000-4   	       1	1391976065 ns/op	45765672 B/op	  592007 allocs/op
+	for n := 0; n < 1000; n++ {
+		GetInformation(1)
+	}
+}
+
+func BenchmarkGetInformationFor10000(b *testing.B) {
+	// BenchmarkGetInformationFor10000-4   	       1	12375727561 ns/op	457815336 B/op	 5928422 allocs/op
+	for n := 0; n < 10000; n++ {
+		GetInformation(1)
+	}
 }
